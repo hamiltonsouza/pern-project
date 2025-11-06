@@ -5,6 +5,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 
 import productRoutes from "./routes/productRoutes.js";
+import {sql} from "./config/db.js";
 
 dotenv.config();
 
@@ -28,12 +29,15 @@ async function initDB() {
             price DECIMAL(10, 2) NOT NULL,
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         )
-        `
+        `;
+        console.log("Database initialized successfully.")
     } catch (error) {
         console.log("Error initializing database.", error);
     }
 }
 
-app.listen(PORT, () => {
-    console.log("Server is running on port " + PORT);
+initDB().then(() => {
+    app.listen(PORT, () => {
+        console.log("Server is running on port " + PORT);
+    });
 });
