@@ -18,14 +18,6 @@ app.use(morgan("dev")); // requests logger
 
 app.use("api/products", productRoutes);
 
-app.get("/test", (req, res) => {
-    res.send("test")
-});
-
-app.get("/", (req, res) => {
-    res.send("test")
-});
-
 app.listen(PORT, () => {
     console.log("Server is running on port " + PORT);
 });
