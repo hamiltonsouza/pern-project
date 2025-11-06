@@ -17,7 +17,7 @@ app.use(cors());
 app.use(helmet()); // security middleware
 app.use(morgan("dev")); // requests logger
 
-app.use("api/products", productRoutes);
+app.use("/api/products", productRoutes);
 
 async function initDB() {
     try {
