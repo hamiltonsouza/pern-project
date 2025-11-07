@@ -17,6 +17,25 @@ app.use(cors());
 app.use(helmet()); // security middleware
 app.use(morgan("dev")); // requests logger
 
+app.use(async (req,res,next) => {
+    try {
+        const decision = await aj.protect(req, {
+            requested:1
+        })
+        if(decision.isDenied()){
+            if(decision.reason.isRateLimit()) {
+                res.status(429).json({error: "Too Many Requests."});
+            } else if (decision.reason.isBot()) {
+                res.status(403).json({ error: "Bot acess denied."});
+            } else {
+                res.status(403).json({ error: "Forbidden."});
+            }
+        };
+    } catch (error) {
+        
+    }
+});
+
 app.use("/api/products", productRoutes);
 
 async function initDB() {
