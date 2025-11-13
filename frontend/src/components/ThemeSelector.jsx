@@ -3,7 +3,7 @@ import { THEMES } from "../constants/index.js";
 import { useThemeStore } from "../store/useThemeStore.js";
 
 function ThemeSelector() {
-    const { theme, setTheme } = useThemeStore;
+    const { theme, setTheme } = useThemeStore();
     return (
         <div className="dropdown dropdown-end">
             <button tabIndex={0} className="btn btn-ghost btn-circle">
