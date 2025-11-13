@@ -6,6 +6,7 @@ import dotenv from "dotenv";
 
 import productRoutes from "./routes/productRoutes.js";
 import {sql} from "./config/db.js";
+import { aj } from "./lib/arcjet.js";
 
 dotenv.config();
 
@@ -30,10 +31,10 @@ app.use(async (req,res,next) => {
             } else {
                 res.status(403).json({ error: "Forbidden."});
             }
-            return
+            return;
         }
 
-        if (decision.results.some((result) => result.reasion.isBot() && result.reason.isSpoofed())) {
+        if (decision.results.some((result) => result.reason.isBot() && result.reason.isSpoofed())) {
             res.status(403).json({ error: "Spoofed bot detected"});
             return;
         }
