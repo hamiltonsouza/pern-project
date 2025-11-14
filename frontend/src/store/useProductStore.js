@@ -16,6 +16,9 @@ export const useProductStore = create((set,get) => ({
         image:"",
     },
 
+    setFormData: (formData) => set({formData}),
+    resetForm: () => set({formData: {name:"", price: "", image: ""}}),
+
     fetchProducts: async() => {
         set({loading:true});
         try {
