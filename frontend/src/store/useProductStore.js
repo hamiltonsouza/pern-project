@@ -10,6 +10,12 @@ export const useProductStore = create((set,get) => ({
     loading:false,
     error:null,
 
+    formData: {
+        name:"",
+        price:"",
+        image:"",
+    },
+
     fetchProducts: async() => {
         set({loading:true});
         try {
@@ -22,6 +28,7 @@ export const useProductStore = create((set,get) => ({
             set({loading:false})
         }
     },
+
     deleteProduct: async (id) => {
         set({loading:true});
         try {
