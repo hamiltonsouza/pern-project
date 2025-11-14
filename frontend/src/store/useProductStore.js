@@ -19,7 +19,7 @@ export const useProductStore = create((set,get) => ({
     setFormData: (formData) => set({formData}),
     resetForm: () => set({formData: {name:"", price: "", image: ""}}),
 
-    addProducts: async(e) => {
+    addProduct: async(e) => {
         e.preventDefault();
         set({ loading: true });
         try {
