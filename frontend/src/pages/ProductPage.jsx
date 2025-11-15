@@ -91,6 +91,18 @@ function ProductPage() {
                   onChange={(e) => setFormData({ ...formData, price: e.target.value })}
                 />
               </div>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text text-base font-medium">Image URL</span>
+                </label>
+                <input
+                  type="text"
+                  placeholder="https://example.com/image.jpg"
+                  className="input input-bordered w-full"
+                  value={formData.image}
+                  onChange={(e) => setFormData({ ...formData, image: e.target.value })}
+                />
+              </div>
             </form>
           </div>
           
