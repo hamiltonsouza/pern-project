@@ -47,6 +47,15 @@ function ProductPage() {
         <ArrowLeftIcon className="size-4 mr-2" />
         Back to Products
       </button>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="rounded-lg overflow-hidden shadow-lg bg-base-100">
+          <img
+            src={currentProduct?.image}
+            alt={currentProduct?.name}
+            className="size-full object-cover"
+          />
+        </div>
+      </div>
     </div>
   );
 }
