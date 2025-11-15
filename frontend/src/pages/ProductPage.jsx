@@ -25,9 +25,11 @@ function ProductPage() {
   }, [fetchProduct, id]);
 
   const handleDelete = async () => {
-    await deleteProduct(id);
-    navigate("/");
-  }
+    if (window.confirm("Are you sure you want to delete this product?")) {
+      await deleteProduct(id);
+      navigate("/");
+    }
+  };
 
   if (loading) {
     return (
@@ -132,7 +134,6 @@ function ProductPage() {
               </div>
             </form>
           </div>
-          
         </div>
       </div>
     </div>
