@@ -26,8 +26,9 @@ export const useProductStore = create((set,get) => ({
             const {formData} = get();
             await axios.post(`${BASE_URL}/api/products`, formData);
             await get().fetchProducts();
-            get().resetForm;
+            get().resetForm();
             toast.success("Product added successfully!");
+            document.getElementById("add_product_modal").close();
         } catch (error) {
             console.log("Error adding product.", error);
             toast.error("Something went wrong.");
