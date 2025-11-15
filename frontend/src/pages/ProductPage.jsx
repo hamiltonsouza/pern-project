@@ -55,6 +55,32 @@ function ProductPage() {
             className="size-full object-cover"
           />
         </div>
+
+        <div className="card bg-base-100 shadow-lg">
+          <div className="card-body">
+            <h2 className="card-title text-2xl mb-6">Edit Product</h2>
+            <form onSubmit={(e) => {
+              e.preventDefault();
+              updateProduct(id);
+            }}
+              className="space-y-6"
+            >
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text text-base font-medium">Product Name</span>
+                </label>
+                <input
+                  type="text"
+                  placeholder="Enter product name"
+                  className="input input-bordered w-full"
+                  value={formData.name}
+                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                />
+              </div>
+            </form>
+          </div>
+          
+        </div>
       </div>
     </div>
   );
