@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useProductStore } from "../store/useProductStore.js";
 import { useNavigate, useParams } from "react-router-dom";
-import { ArrowLeftIcon } from "lucide-react";
+import { ArrowLeftIcon, SaveIcon, Trash2Icon } from "lucide-react";
 
 function ProductPage() {
 
@@ -23,6 +23,11 @@ function ProductPage() {
   useEffect(() => {
     fetchProduct(id);
   }, [fetchProduct, id]);
+
+  const handleDelete = async () => {
+    await deleteProduct(id);
+    navigate("/");
+  }
 
   if (loading) {
     return (
@@ -102,6 +107,28 @@ function ProductPage() {
                   value={formData.image}
                   onChange={(e) => setFormData({ ...formData, image: e.target.value })}
                 />
+              </div>
+
+              <div className="flex justify-between mt-8">
+                <button type="button" onClick={handleDelete} className="btn btn-error">
+                  <Trash2Icon className="size-4 mr-2" />
+                  Delete Product
+                </button>
+
+                <button
+                  type="submit"
+                  className="btn btn-primary"
+                  disabled={loading || !formData.name || !formData.price || !formData.image}
+                >
+                  {loading ? (
+                    <span className="loading loading-spinner loadin-sm" />
+                  ) : (
+                    <>
+                      <SaveIcon className="size-4 mr-2" />
+                      Save Changes
+                    </>
+                  )}
+                </button>
               </div>
             </form>
           </div>
